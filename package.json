@@ -1,0 +1,13 @@
+{
+  "name": "xenia-physio-rehab",
+  "version": "1.0.0",
+  "description": "XENIA Physio & Rehab Center Hospital Landing Page UI",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["xenia", "physiotherapy", "rehabilitation", "hospital"],
+  "author": "Xenia Healthcare",
+  "license": "ISC"
+}
+

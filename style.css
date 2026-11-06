@@ -1,0 +1,1635 @@
+/* ==========================================================================
+   XENIA Physio & Rehab Center - Hospital Landing Page Styles
+   Aesthetic, Bright & Pastel Healthcare Design
+   Features:
+   - Logo brightens & enlarges on hover
+   - Modules enlarge on hover with smooth elevation
+   - Centered creative tagline with custom typography (Playfair Display)
+   - Aesthetic hospital doodles in header background
+   - Bright but pastel color palette with clinical elegance
+   ========================================================================== */
+
+/* Design Tokens: Bright Pastel Healthcare Palette */
+:root {
+  /* Bright Pastel Tones */
+  --pastel-blue: #38bdf8;        /* Sky Blue Pastel */
+  --pastel-blue-dark: #0284c7;   /* Deep Medical Sky */
+  --pastel-blue-light: #e0f2fe;  /* Ice Blue Soft Tint */
+  --pastel-blue-subtle: #f0f9ff; /* Very soft sky wash */
+
+  --pastel-teal: #2dd4bf;        /* Bright Pastel Teal */
+  --pastel-teal-dark: #0f766e;   /* Clinical Deep Teal */
+  --pastel-teal-light: #ccfbf1;  /* Soft Aqua Tint */
+  --pastel-teal-subtle: #f0fdfa; /* Ultra-soft aqua wash */
+
+  --pastel-mint: #34d399;        /* Vitality Mint Pastel */
+  --pastel-mint-dark: #059669;   /* Forest Mint */
+  --pastel-mint-light: #d1fae5;  /* Soft Mint Tint */
+  --pastel-mint-subtle: #ecfdf5; /* Calming Mint Wash */
+
+  --pastel-lavender: #e0e7ff;    /* Calming Lavender Tint */
+
+  /* Neutrals & Surfaces */
+  --bg-page: #f8fafc;            /* Crisp clean slate-50 */
+  --bg-white: #ffffff;
+  --border-color: #e2e8f0;       /* Slate 200 */
+  --border-pastel: #bae6fd;      /* Pastel Sky Accent Border */
+  --border-light: #f1f5f9;
+
+  /* Typography Colors */
+  --text-dark: #0f172a;          /* Slate 900 */
+  --text-body: #334155;          /* Slate 700 */
+  --text-muted: #64748b;         /* Slate 500 */
+  --text-light: #94a3b8;         /* Slate 400 */
+
+  /* Dimensions & Timing */
+  --header-height: 90px;
+  --sidebar-width: 345px;
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.28s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+/* Reset and Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text-body);
+  background-color: var(--bg-page);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   1. TOP HEADER - HOSPITAL BRANDING
+   Full-width header with:
+   - Doodles in background
+   - Top-left Xenia & logo
+   - Centered large stylized tagline
+   - Top-right 24/7 care badge
+   ========================================================================== */
+.top-header {
+  width: 100%;
+  height: var(--header-height);
+  background: linear-gradient(180deg, #ffffff 0%, #f0fdfa 70%, #f0f9ff 100%);
+  border-bottom: 1.5px solid rgba(186, 230, 253, 0.6);
+  box-shadow: 0 4px 20px -2px rgba(45, 212, 191, 0.08);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  overflow: hidden;
+}
+
+/* --- Aesthetic Hospital Doodles Layer --- */
+.header-doodles-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.doodle {
+  position: absolute;
+  color: var(--pastel-teal);
+  opacity: 0.22;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.top-header:hover .doodle {
+  opacity: 0.34;
+}
+
+/* Stethoscope Doodle (Left Accent) */
+.doodle-stethoscope {
+  top: 10px;
+  left: 280px;
+  width: 48px;
+  height: 48px;
+  transform: rotate(-10deg);
+  color: var(--pastel-blue);
+}
+
+/* ECG Heartbeat Doodle (Center-Left) */
+.doodle-ecg {
+  bottom: 6px;
+  left: 360px;
+  width: 95px;
+  height: 32px;
+  color: var(--pastel-mint);
+}
+
+/* Cross & Sparkle Doodle (Center-Right) */
+.doodle-cross {
+  top: 8px;
+  right: 360px;
+  width: 40px;
+  height: 40px;
+  color: var(--pastel-teal);
+}
+
+/* Pill Capsule Doodle (Right Accent) */
+.doodle-pill {
+  bottom: 8px;
+  right: 250px;
+  width: 36px;
+  height: 36px;
+  color: var(--pastel-blue);
+}
+
+/* Leaf Doodle */
+.doodle-leaf {
+  top: 6px;
+  right: 80px;
+  width: 34px;
+  height: 34px;
+  color: var(--pastel-mint);
+}
+
+/* Header Content Layout: Left Branding, Center Tagline, Right Badge */
+.header-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+/* Branding on the Top-Left Corner */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+/* --- LOGO: Brightens & Enlarges on Hover --- */
+.logo-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-teal) 50%, var(--pastel-mint) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(45, 212, 191, 0.32);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+/* Logo Brighten Up and Enlarge */
+.logo-box:hover {
+  transform: scale(1.18) rotate(3deg);
+  filter: brightness(1.22);
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.5), 0 0 20px rgba(45, 212, 191, 0.45);
+}
+
+.hospital-logo {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.logo-box:hover .hospital-logo {
+  transform: scale(1.08);
+}
+
+/* Brand Typography */
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.name-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.1;
+}
+
+.hospital-name {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, #0f172a 0%, #0369a1 70%, #0f766e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.center-badge {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 2px 7px;
+  background: var(--pastel-blue-light);
+  color: var(--pastel-blue-dark);
+  border-radius: 6px;
+  border: 1px solid var(--border-pastel);
+}
+
+.hospital-subtitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--pastel-teal-dark);
+  margin-top: 2px;
+}
+
+/* --- CENTER: Creative Hospital Tagline (Enlarged & Stylized) --- */
+.header-center-tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  padding: 0 16px;
+  flex: 1;
+}
+
+.tagline-ornament {
+  font-size: 0.85rem;
+  color: var(--pastel-teal);
+  animation: sparkle-glow 3s infinite ease-in-out;
+}
+
+@keyframes sparkle-glow {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); color: var(--pastel-blue); }
+}
+
+.hospital-tagline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  background: linear-gradient(135deg, #0284c7 0%, #0d9488 50%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+}
+
+/* Top-Right Healthcare Status Badge */
+.header-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  background: var(--pastel-mint-subtle);
+  border: 1.5px solid rgba(52, 211, 153, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(52, 211, 153, 0.12);
+  flex-shrink: 0;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--pastel-mint);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.3);
+  animation: pulse-dot 2.5s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(1); box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.4); }
+  50% { transform: scale(1.2); box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.4); }
+}
+
+.status-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #065f46;
+}
+
+/* ==========================================================================
+   PAGE LAYOUT
+   ========================================================================== */
+.main-container {
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+  position: relative;
+}
+
+/* ==========================================================================
+   2. LEFT-SIDE INTERACTIVE MODULE NAVIGATION SIDEBAR
+   ========================================================================== */
+.sidebar {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  background: var(--bg-white);
+  border-right: 1px solid var(--border-color);
+  height: calc(100vh - var(--header-height));
+  position: sticky;
+  top: var(--header-height);
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+  box-shadow: 2px 0 12px rgba(15, 23, 42, 0.02);
+}
+
+/* ==========================================================================
+   SIDEBAR DASHBOARD: BASIC HOSPITAL INFORMATION
+   ========================================================================== */
+.sidebar-dashboard-section {
+  padding: 12px 12px 10px 12px;
+  background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 100%);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.dashboard-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.dashboard-tag {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--pastel-mint);
+  box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.35);
+  animation: pulse-dot 2.5s infinite;
+}
+
+.sidebar-title {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--pastel-teal-dark);
+  text-transform: uppercase;
+}
+
+.center-status-pill {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  background: var(--pastel-mint-light);
+  color: #065f46;
+  border-radius: 12px;
+  border: 1px solid rgba(52, 211, 153, 0.4);
+}
+
+/* Basic Information Card in Sidebar Dashboard */
+.dashboard-info-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid rgba(186, 230, 253, 0.85);
+  border-radius: 12px;
+  padding: 10px 10px;
+  box-shadow: 0 2px 10px rgba(45, 212, 191, 0.08);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.info-hospital-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0369a1;
+  line-height: 1.25;
+}
+
+.info-tagline {
+  font-size: 0.68rem;
+  font-style: italic;
+  color: #64748b;
+  margin-top: 2px;
+  margin-bottom: 9px;
+}
+
+.info-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 5px 6px;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.info-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.info-text-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+.info-label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info-val {
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   SEARCH BAR ON TOP OF THE MODULES
+   ========================================================================== */
+.sidebar-search-area {
+  padding: 8px 12px 6px 12px;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.search-input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-icon-symbol {
+  position: absolute;
+  left: 10px;
+  color: var(--pastel-blue);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.module-search-input {
+  width: 100%;
+  padding: 7px 30px 7px 32px;
+  font-size: 0.78rem;
+  font-family: inherit;
+  color: var(--text-dark);
+  background: #f8fafc;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.module-search-input:focus {
+  background: #ffffff;
+  border-color: var(--pastel-teal);
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.16);
+}
+
+.module-search-input::placeholder {
+  color: var(--text-light);
+  font-size: 0.76rem;
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-search-btn:hover {
+  color: var(--text-dark);
+  background: #f1f5f9;
+}
+
+.search-feedback {
+  font-size: 0.68rem;
+  color: #0284c7;
+  margin-top: 4px;
+  font-weight: 600;
+  padding: 0 2px;
+}
+
+/* Modules Section Header */
+.modules-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px 5px 12px;
+  background: #ffffff;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.modules-heading {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.module-count {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  background: var(--pastel-blue-light);
+  color: var(--pastel-blue-dark);
+  border-radius: 10px;
+  border: 1px solid var(--border-pastel);
+}
+
+/* Modules Scrollable Area */
+.modules-list {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px 12px 24px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Clean Custom Scrollbar */
+.modules-list::-webkit-scrollbar {
+  width: 4px;
+}
+.modules-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modules-list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.modules-list::-webkit-scrollbar-thumb:hover {
+  background: var(--pastel-teal);
+}
+
+/* ==========================================================================
+   MODULE ITEM & BUTTON
+   --- ENLARGES ON MOUSE HOVER ---
+   ========================================================================== */
+.module-item {
+  width: 100%;
+  position: relative;
+  display: block;
+}
+
+/* Module Header Button */
+.module-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: all var(--transition-normal);
+  outline: none;
+  transform-origin: left center;
+}
+
+.btn-left {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  flex: 1;
+}
+
+/* Module Icon Container */
+.module-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--pastel-blue-subtle);
+  color: var(--pastel-blue-dark);
+  border: 1px solid rgba(186, 230, 253, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-normal);
+}
+
+/* Module Title */
+.module-name {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-body);
+  line-height: 1.35;
+  transition: color var(--transition-fast);
+}
+
+/* Module Navigation Arrow Indicator */
+.module-arrow {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #94a3b8;
+  transition: transform var(--transition-normal), color var(--transition-fast);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* --- MODULE ENLARGE ON MOUSE HOVER --- */
+.module-btn:hover {
+  transform: scale(1.035) translateX(3px);
+  background: linear-gradient(90deg, var(--pastel-teal-subtle) 0%, var(--pastel-blue-subtle) 100%);
+  border-color: rgba(153, 246, 228, 0.7);
+  box-shadow: 0 6px 16px rgba(45, 212, 191, 0.16);
+}
+
+.module-btn:hover .module-name {
+  color: #0369a1;
+  font-weight: 600;
+}
+
+.module-btn:hover .module-icon {
+  transform: scale(1.12);
+  background: var(--pastel-blue-light);
+  color: #0284c7;
+  border-color: var(--pastel-blue);
+  box-shadow: 0 3px 10px rgba(56, 189, 248, 0.25);
+}
+
+.module-btn:hover .module-arrow {
+  color: var(--pastel-teal-dark);
+  transform: translateX(2px);
+}
+
+/* --- HIGHLIGHT ACTIVE / SELECTED MODULE --- */
+.module-item.active > .module-btn {
+  background: linear-gradient(135deg, var(--pastel-blue-light) 0%, var(--pastel-teal-light) 100%);
+  border-color: var(--pastel-teal);
+  box-shadow: 0 4px 14px rgba(45, 212, 191, 0.18);
+}
+
+.module-item.active .module-name {
+  color: var(--pastel-teal-dark);
+  font-weight: 700;
+}
+
+.module-item.active .module-icon {
+  background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-teal) 100%);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 10px rgba(13, 148, 136, 0.28);
+}
+
+.module-item.active .module-arrow {
+  color: var(--pastel-teal-dark);
+  transform: translateX(3px);
+  font-weight: 900;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  padding: 12px 18px;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.7rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  background: #ffffff;
+}
+
+.footer-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pastel-mint);
+  box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.3);
+}
+
+/* ==========================================================================
+   LANDING PAGE INFORMATION OVERVIEW (BASIC HOSPITAL INFORMATION)
+   ========================================================================== */
+.content-area {
+  flex: 1;
+  min-height: 100%;
+  background-color: var(--bg-page);
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(56, 189, 248, 0.04) 0px, transparent 50%),
+    radial-gradient(at 90% 15%, rgba(45, 212, 191, 0.045) 0px, transparent 50%),
+    radial-gradient(at 50% 85%, rgba(52, 211, 153, 0.035) 0px, transparent 60%);
+  position: relative;
+  overflow-y: auto;
+  padding: 28px 32px;
+}
+
+/* ==========================================================================
+   MODULE VIEW CONTAINERS (INTERACTIVE MODULE SWITCHING)
+   ========================================================================== */
+.module-view {
+  width: 100%;
+  animation: fadeInModule 0.22s ease-out;
+}
+
+@keyframes fadeInModule {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.module-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.module-stat-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f0fdfa 100%);
+  border: 1.5px solid rgba(186, 230, 253, 0.8);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: all 0.2s ease;
+}
+
+.module-stat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--pastel-teal);
+  box-shadow: 0 4px 12px rgba(45, 212, 191, 0.12);
+}
+
+.module-stat-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+}
+
+.module-stat-val {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0369a1;
+}
+
+/* ==========================================================================
+   PATIENT DIRECTORY & RECORDS LIST (POPULATED AREA)
+   ========================================================================== */
+.patient-directory-card {
+  max-width: 1060px;
+  margin: 0 auto 30px auto;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(186, 230, 253, 0.7);
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 10px 30px -5px rgba(45, 212, 191, 0.12);
+  position: relative;
+  z-index: 10;
+}
+
+/* Header Row: Title on Left, New Patient Button on Top Right */
+.directory-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.directory-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.directory-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.directory-status-pill {
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  background: var(--pastel-mint-subtle);
+  color: #065f46;
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  border-radius: 20px;
+}
+
+.directory-hospital-name {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--pastel-teal-dark);
+  text-transform: uppercase;
+}
+
+.directory-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+  background: linear-gradient(135deg, #0f172a 0%, #0369a1 65%, #0f766e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.directory-subtitle {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 3px;
+}
+
+/* Top Right: New Patient Registration Button */
+.directory-actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.btn-new-patient {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0f172a;
+  color: #ffffff;
+  border: 1.5px solid #0f172a;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.22);
+  transition: box-shadow 0.2s ease;
+}
+
+/* Dark color maintained with NO mouse hover color change */
+.btn-new-patient:hover {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.32);
+  transform: none;
+}
+
+.btn-new-patient:active {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.btn-new-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Search and Filter Row inside Directory */
+.directory-filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 8px 12px;
+  flex-wrap: wrap;
+}
+
+.filter-controls-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+/* Decreased Compact Search Bar Size */
+.patient-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 220px;
+  max-width: 240px;
+  flex: 0 0 auto;
+  background: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  padding: 6px 10px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.patient-search-box:focus-within {
+  border-color: var(--pastel-teal);
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.16);
+}
+
+.search-icon-small {
+  font-size: 0.85rem;
+  color: var(--pastel-blue-dark);
+  flex-shrink: 0;
+}
+
+.patient-search-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.78rem;
+  font-family: inherit;
+  color: var(--text-dark);
+}
+
+.patient-search-input::placeholder {
+  color: #94a3b8;
+  font-size: 0.76rem;
+}
+
+/* Filter Dropdown Select Wrappers */
+.filter-select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  padding: 6px 10px;
+  transition: all 0.2s ease;
+}
+
+.filter-select-wrapper:hover,
+.filter-select-wrapper:focus-within {
+  border-color: var(--pastel-teal);
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.14);
+}
+
+.filter-icon {
+  font-size: 0.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.patient-filter-select {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.76rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #334155;
+  cursor: pointer;
+  padding-right: 2px;
+}
+
+.patient-filter-select option {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+/* Reset Filters Button */
+.btn-reset-filters {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-reset-filters:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+
+.patient-count-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  background: var(--pastel-blue-light);
+  color: var(--pastel-blue-dark);
+  border-radius: 12px;
+  border: 1px solid var(--border-pastel);
+  white-space: nowrap;
+}
+
+/* Clean Patient Table List */
+.patient-list-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.8125rem;
+}
+
+.patient-table thead {
+  background: linear-gradient(180deg, #f0fdfa 0%, #f0f9ff 100%);
+  border-bottom: 1.5px solid var(--border-color);
+}
+
+.patient-table th {
+  padding: 12px 14px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #475569;
+  white-space: nowrap;
+}
+
+.patient-table tbody tr {
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.18s ease;
+}
+
+.patient-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.patient-table tbody tr:hover {
+  background: #f0fdfa;
+}
+
+.patient-table td {
+  padding: 12px 14px;
+  vertical-align: middle;
+}
+
+/* Patient Profile Cell (Avatar + Name + Age) */
+.patient-cell-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.patient-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pastel-blue-light) 0%, var(--pastel-teal-light) 100%);
+  color: var(--pastel-teal-dark);
+  font-weight: 800;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--border-pastel);
+  flex-shrink: 0;
+}
+
+.patient-main-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.patient-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.patient-demographics {
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-top: 1px;
+}
+
+/* Data Chips & Badges */
+.id-chip {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-family: monospace;
+  font-weight: 700;
+  color: var(--pastel-blue-dark);
+  background: #f0f9ff;
+  border: 1px solid var(--border-pastel);
+  padding: 2px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.date-chip {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #334155;
+  white-space: nowrap;
+}
+
+.dept-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #0f766e;
+  background: #f0fdfa;
+  border: 1px solid rgba(45, 212, 191, 0.4);
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+  background: var(--pastel-mint-subtle);
+  color: #065f46;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  white-space: nowrap;
+}
+
+.status-chip::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pastel-mint);
+}
+
+/* Action: View Patient Button */
+.btn-view-patient {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--pastel-blue-subtle);
+  color: var(--medical-blue-dark);
+  border: 1.5px solid var(--border-pastel);
+  border-radius: 8px;
+  padding: 6px 13px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.4, 0.64, 1);
+  white-space: nowrap;
+}
+
+.btn-view-patient:hover {
+  background: var(--medical-blue);
+  color: #ffffff;
+  border-color: var(--medical-blue);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+/* ==========================================================================
+   POPUP MODALS (VIEW PATIENT DETAILS & NEW PATIENT REGISTRATION)
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  background: #ffffff;
+  border: 1.5px solid rgba(186, 230, 253, 0.85);
+  border-radius: 18px;
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.94) translateY(8px);
+  transition: transform 0.28s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.modal-backdrop.active .modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.modal-form-card {
+  max-width: 660px;
+}
+
+/* Modal Header */
+.modal-header {
+  padding: 18px 22px;
+  background: linear-gradient(180deg, #f0fdfa 0%, #f0f9ff 100%);
+  border-bottom: 1.5px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.modal-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-id-pill {
+  font-size: 0.72rem;
+  font-family: monospace;
+  font-weight: 800;
+  padding: 3px 8px;
+  background: var(--pastel-blue-light);
+  color: var(--pastel-blue-dark);
+  border-radius: 6px;
+  border: 1px solid var(--border-pastel);
+}
+
+.modal-badge-teal {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 9px;
+  background: var(--pastel-teal-light);
+  color: var(--pastel-teal-dark);
+  border-radius: 6px;
+}
+
+.modal-heading {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.16s ease;
+}
+
+.modal-close-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 22px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Modal Details Content Grid */
+.patient-profile-modal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-info-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.modal-section-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0f766e;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.modal-data-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px 16px;
+}
+
+.modal-data-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+}
+
+.modal-value {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-top: 1px;
+}
+
+/* Mobility Progress Bar in Modal */
+.modal-progress-bar-wrap {
+  margin-top: 6px;
+  width: 100%;
+}
+
+.modal-progress-track {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.modal-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pastel-teal) 0%, var(--pastel-blue) 100%);
+  border-radius: 6px;
+  transition: width 0.4s ease;
+}
+
+/* Modal Footer */
+.modal-footer {
+  padding: 14px 22px;
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.btn-modal-secondary {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #475569;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.btn-modal-secondary:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.btn-modal-primary {
+  background: linear-gradient(135deg, var(--medical-blue) 0%, var(--light-teal) 100%);
+  border: none;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-modal-primary:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #0d9488 100%);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   FORM INPUT STYLES (NEW PATIENT FORM)
+   ========================================================================== */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #475569;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 0.8125rem;
+  font-family: inherit;
+  color: #0f172a;
+  background: #f8fafc;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  background: #ffffff;
+  border-color: var(--pastel-teal);
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.18);
+}
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #065f46;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(6, 95, 70, 0.3);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  animation: slide-up 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.watermark-symbol {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 440px;
+  height: 440px;
+  opacity: 0.025;
+  pointer-events: none;
+  color: var(--pastel-blue);
+  z-index: 1;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN FOR SMALLER SCREENS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .top-header {
+    height: auto;
+    padding: 14px 20px;
+  }
+
+  .header-container {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .header-center-tagline {
+    order: 3;
+    width: 100%;
+    margin-top: 6px;
+    padding: 6px 0;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .hospital-tagline {
+    white-space: normal;
+    font-size: 1.05rem;
+  }
+
+  .doodle-stethoscope, .doodle-cross, .doodle-leaf {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .header-status {
+    display: none;
+  }
+
+  .hospital-name {
+    font-size: 1.4rem;
+  }
+
+  .hospital-tagline {
+    font-size: 0.95rem;
+  }
+}
